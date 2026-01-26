@@ -18,7 +18,10 @@ export const productsApi = createApi({
       query: (limit=30) => `products?limit=${limit}`,
       transformResponse: (response: IProductResponse) => response.products
     }),
+    getProduct: build.query<IProduct, string | void >({
+      query: (id) => `products/${id}`,
+    }),
   }),
 })
 
-export const {useGetProductsQuery} = productsApi
+export const {useGetProductsQuery, useGetProductQuery} = productsApi
