@@ -1,4 +1,5 @@
 import Header from '../Header/Header'
+import ProductsList from '../ProductsList/ProductsList'
 
 const Home = () => {
 
@@ -6,6 +7,7 @@ const Home = () => {
   return (
     <>
       <Header/>
+      <ProductsList/>
     </>
   )
 }
