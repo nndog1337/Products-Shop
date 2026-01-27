@@ -2,7 +2,12 @@
   display: flex;
   gap: 40px;
 }
-
+.section{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
 .products{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
