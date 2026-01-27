@@ -1,7 +1,8 @@
 
 import { Routes, Route } from 'react-router'
-import MainPage from '../pages/MainPage/MainPage'
-import CardPage from '../pages/MainPage/CardPage'
+import MainPage from '../pages/MainPage'
+import CardPage from '../pages/CardPage'
+import CatalogPage from '../pages/CatalogPage'
 
 
 
@@ -11,6 +12,7 @@ const Routing = () => {
       <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path='/products/:id' element={<CardPage/>}/>
+          <Route path='/products/catalog' element={<CatalogPage/>}/>
       </Routes>
     </>
   )
