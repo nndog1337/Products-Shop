@@ -10,7 +10,7 @@ const Nav = () => {
             Главная
           </li>
         </NavLink>
-        <NavLink to="catalog" end>
+        <NavLink to="products/catalog" end>
           <li>
             Каталог
           </li>

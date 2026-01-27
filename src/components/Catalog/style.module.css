@@ -1,0 +1,15 @@
+.main{
+  display: flex;
+  gap: 40px;
+}
+
+.products{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* или auto-fill */
+  grid-auto-rows: 500px; /* ⬅ фиксированная высота каждой строки */
+  gap: 20px; /* одинаковые отступы */
+}
+
+.card{
+  width: 300px;
+}

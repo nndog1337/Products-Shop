@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router'
 import styles from './style.module.css'
 
 interface ICardProps{
+  className:string
   id: number,
   thumbnail: string,
   title: string,
@@ -11,6 +12,7 @@ interface ICardProps{
 
 const Card = (Props: ICardProps) => {
   const {
+    className,
     id,
     thumbnail,
     title,
@@ -25,7 +27,7 @@ const Card = (Props: ICardProps) => {
   }
 
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${className}`}>
       <div className={styles.imgWrapper} onClick={handleClick}>
         <img src={thumbnail} alt={title} />
       </div>
