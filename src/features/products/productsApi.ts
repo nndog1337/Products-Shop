@@ -36,7 +36,14 @@ export const productsApi = createApi({
       query: ({ category, limit = 30, skip = 0 }) => `products/category/${category}?limit=${limit}&skip=${skip}`,
       transformResponse: (response: IProductResponse) => response.products
     }),
+    getProductsBySearch: build.query<IProduct[], {
+      query: string,
+      skip?: number
+    } >({
+      query: ({query,skip=0}) => `products/search?q=${query}&skip=${skip}`,
+      transformResponse: (response: IProductResponse) => response.products
+    }),
   }),
 })
 
-export const {useGetProductsQuery, useGetProductQuery, useGetProductsCategoriesQuery, useGetProductsByCategoryQuery} = productsApi
+export const {useGetProductsQuery, useGetProductQuery, useGetProductsCategoriesQuery, useGetProductsByCategoryQuery, useGetProductsBySearchQuery} = productsApi

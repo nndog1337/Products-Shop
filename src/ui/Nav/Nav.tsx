@@ -15,7 +15,7 @@ const Nav = () => {
             Каталог
           </li>
           </NavLink>
-        <NavLink to="search" end>
+        <NavLink to="products/search" end>
           <li>
             Поиск
           </li>

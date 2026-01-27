@@ -26,8 +26,8 @@ const Catalog = () => {
   return (
     <main className={styles.main}>
       <Categories handleClick={handleClick}/>
-      {isLoading || isLoadingBYCategory ? <p style={{fontSize: '34px', textAlign:'center'}}>Loading</p> 
-      : error||errorByCategory ? <p>Error</p> 
+      {isLoading || isLoadingBYCategory ? (<p style={{fontSize: '34px', textAlign:'center'}}>Loading</p>) 
+      : error||errorByCategory ? (<p>Error</p>) 
       :<section className={styles.products}>
         {productsList?.map((product) => (
           <Card
