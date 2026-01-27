@@ -4,12 +4,15 @@ import Categories from '../../ui/Categories/Categories'
 import styles from './style.module.css'
 import type { IProduct } from '../../types/types'
 import Card from '../../ui/Card/Card'
+import Select from '../../ui/Select/Select'
 
 const Catalog = () => {
-  const[productsList, setProductsList] = useState<IProduct[]>([])
+  const [productsList, setProductsList] = useState<IProduct[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string>('');
-  const { data:allProductsData, isLoading, error } = useGetProductsQuery({ limit: 30 }, { skip: !!selectedCategory }) 
-  const { data:productsByCategory, isLoading: isLoadingBYCategory, error: errorByCategory } = useGetProductsByCategoryQuery({ category: selectedCategory },{ skip: !selectedCategory });
+  const [sortValue, setSortValue] = useState<string>('rating-desc');
+  const [sortBy, sortOrder] = sortValue.split('-') as [string, 'asc' | 'desc'];
+  const { data:allProductsData, isLoading, error } = useGetProductsQuery({ limit: 30, sortBy: sortBy, order: sortOrder }, { skip: !!selectedCategory })
+  const { data:productsByCategory, isLoading: isLoadingBYCategory, error: errorByCategory } = useGetProductsByCategoryQuery({ category: selectedCategory, sortBy: sortBy, order: sortOrder },{ skip: !selectedCategory });
 
   useEffect(() => {
     if (selectedCategory && productsByCategory) {
@@ -17,30 +20,40 @@ const Catalog = () => {
     } else if (!selectedCategory && allProductsData) {
       setProductsList(allProductsData);
     }
-  }, [selectedCategory, allProductsData, productsByCategory]);
+  }, [selectedCategory, allProductsData, productsByCategory, sortValue]);
 
 
   const handleClick = (category:string) => {
     setSelectedCategory(category)
   }
+
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortValue(e.target.value);
+  }
+
+
+
   return (
     <main className={styles.main}>
       <Categories handleClick={handleClick}/>
       {isLoading || isLoadingBYCategory ? (<p style={{fontSize: '34px', textAlign:'center'}}>Loading</p>) 
       : error||errorByCategory ? (<p>Error</p>) 
-      :<section className={styles.products}>
-        {productsList?.map((product) => (
-          <Card
-            className={styles.card}
-            key={product.id} 
-            id={product.id}
-            thumbnail={product.thumbnail} 
-            rating={product.rating} 
-            title={product.title} 
-            price={product.price}
-          />
-        ))
-        }
+      :<section className={styles.section}>
+        <Select sortBy={sortValue} handleChange={handleSortChange} />
+        <div className={styles.products}>
+          {productsList?.map((product) => (
+            <Card
+              className={styles.card}
+              key={product.id} 
+              id={product.id}
+              thumbnail={product.thumbnail} 
+              rating={product.rating} 
+              title={product.title} 
+              price={product.price}
+            />
+          ))
+          }
+        </div>
       </section>}
     </main>
   )
