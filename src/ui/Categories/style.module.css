@@ -1,0 +1,23 @@
+.aside{
+  padding: 10px;
+  border-radius: 8px;
+  width: 300px;
+  flex-shrink: 0
+}
+
+h2{
+  text-align: center;
+  color: var(--light-gray);
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.categoriesWrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button{
+  color: var(--light-gray);
+}

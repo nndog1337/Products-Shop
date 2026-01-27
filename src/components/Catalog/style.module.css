@@ -1,0 +1,15 @@
+.main{
+  display: flex;
+  gap: 40px;
+}
+
+.products{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 500px; 
+  gap: 20px;
+}
+
+.card{
+  width: 300px;
+}
