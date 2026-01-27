@@ -16,9 +16,20 @@ export const productsApi = createApi({
   endpoints: (build) => ({
     getProducts: build.query<IProduct[], {
       limit?:number,
-      skip?:number
+      skip?:number,
+      sortBy?: string,
+      order?:'asc' | 'desc'
     }>({
-      query: ({limit,skip=0}) => `products?limit=${limit}&skip=${skip}`,
+      query: ({ limit, skip = 0, sortBy, order }) => {
+        const params = new URLSearchParams();
+        if (limit) params.append('limit', limit.toString());
+        if (skip) params.append('skip', skip.toString());
+        if (sortBy) params.append('sortBy', sortBy);
+        if (order) params.append('order', order);
+        
+        const queryString = params.toString();
+        return `products${queryString ? `?${queryString}` : ''}`;
+      },
       transformResponse: (response: IProductResponse) => response.products
     }),
     getProduct: build.query<IProduct, string | void >({
@@ -27,13 +38,25 @@ export const productsApi = createApi({
     getProductsCategories: build.query<string[], void >({
       query: () => `products/category-list`,
     }),
+
     getProductsByCategory: build.query<IProduct[], { 
       category: string; 
       limit?: number;
       skip?: number;
+      sortBy?: string,
+      order?:'asc' | 'desc'
     }
     >({
-      query: ({ category, limit = 30, skip = 0 }) => `products/category/${category}?limit=${limit}&skip=${skip}`,
+      query: ({ category, limit = 30, skip = 0, sortBy, order}) => {
+        const params = new URLSearchParams();
+        if (limit) params.append('limit', limit.toString());
+        if (skip) params.append('skip', skip.toString());
+        if (sortBy) params.append('sortBy', sortBy);
+        if (order) params.append('order', order);
+        
+        const queryString = params.toString();
+        return `products/category/${category}${queryString ? `?${queryString}` : ''}`;
+      },
       transformResponse: (response: IProductResponse) => response.products
     }),
     getProductsBySearch: build.query<IProduct[], {

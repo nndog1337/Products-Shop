@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router'
+import image from "/public/pngtree-grey-logo-mockup-design-shine-background-image_562406.jpg"
 import styles from './style.module.css'
 
 const Logo = () => {
   return (
     <NavLink to="/" end>
-      <img className={styles.logo} src="/public/pngtree-grey-logo-mockup-design-shine-background-image_562406.jpg" alt="" />
+      <img className={styles.logo} src={image} alt="" />
     </NavLink>
   )
 }
