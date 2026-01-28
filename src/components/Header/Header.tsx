@@ -10,7 +10,7 @@ const Header = () => {
     <header className={styles.header}>
       <Logo/>
       <Nav/>
-      <NavLink to="cart" end>
+      <NavLink to="products/cart" end>
         <Button children={'Корзина'} className={styles.button}/>
       </NavLink>
     </header>

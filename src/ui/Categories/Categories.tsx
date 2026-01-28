@@ -19,7 +19,7 @@ const Categories = (Props:CategoriesProps) => {
   return (
     <>
       <aside className={styles.aside}>
-        {isLoading ? (<p style={{fontSize: '34px', textAlign:'center'}}>Loading...</p>) : error ? (<p>Категорий нет</p>) :
+        {isLoading ? (<p style={{fontSize: '34px', textAlign:'center', color: '#DCDCDC'}}>Loading...</p>) : error ? (<p>Категорий нет</p>) :
         (<>
           <h2>Категории товаров</h2>
           <div className={styles.categoriesWrapper}>

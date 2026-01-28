@@ -36,25 +36,28 @@ const Catalog = () => {
   return (
     <main className={styles.main}>
       <Categories handleClick={handleClick}/>
-      {isLoading || isLoadingBYCategory ? (<p style={{fontSize: '34px', textAlign:'center'}}>Loading</p>) 
-      : error||errorByCategory ? (<p>Error</p>) 
-      :<section className={styles.section}>
+      <section className={styles.section}>
         <Select sortBy={sortValue} handleChange={handleSortChange} />
-        <div className={styles.products}>
-          {productsList?.map((product) => (
-            <Card
-              className={styles.card}
-              key={product.id} 
-              id={product.id}
-              thumbnail={product.thumbnail} 
-              rating={product.rating} 
-              title={product.title} 
-              price={product.price}
-            />
-          ))
-          }
-        </div>
-      </section>}
+        {isLoading || isLoadingBYCategory ? (<p style={{fontSize: '34px', marginInline:'auto', color: '#DCDCDC'}}>Loading...</p>) 
+          : error||errorByCategory ? (<p>Error</p>) 
+          :<>
+            <div className={styles.products}>
+              {productsList?.map((product) => (
+                <Card
+                  className={styles.card}
+                  key={product.id} 
+                  id={product.id}
+                  thumbnail={product.thumbnail} 
+                  rating={product.rating} 
+                  title={product.title} 
+                  price={product.price}
+                />
+              ))
+              }
+            </div>
+          </>
+        }
+      </section>
     </main>
   )
 }
