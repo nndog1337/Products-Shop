@@ -8,7 +8,7 @@ const ProductsList = () => {
   })
   return (
     <main className={styles.products}>
-      {isLoading ? (<p style={{fontSize: '34px', textAlign:'center'}}>Loading</p>) 
+      {isLoading ? (<p style={{fontSize: '34px', textAlign:'center', color: '#DCDCDC'}}>Loading</p>) 
       : error ? (<p>Error</p>)
       : 
         (products?.map((product) => (

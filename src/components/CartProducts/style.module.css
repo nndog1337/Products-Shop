@@ -1,0 +1,31 @@
+.main{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardList{
+  width: 800px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card{
+  width: 350px;
+}
+
+.info{
+  position: sticky;
+  top: 40vh;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: var(--light-gray);
+  font-size: 40px;
+} 
+
+.button{
+  width: 100%;
+}
