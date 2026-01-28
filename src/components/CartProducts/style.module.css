@@ -29,3 +29,14 @@
 .button{
   width: 100%;
 }
+
+
+.order{
+  display: flex;
+  flex-direction: column;
+}
+
+.deleteAllButton{
+  margin-inline: auto;
+  color: var(--light-gray);
+}

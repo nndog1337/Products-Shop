@@ -69,6 +69,9 @@ export const cartSlice = createSlice({
         }
       }
     },
+    removeAllFromCart: (state) => {
+      state.items = []
+    },
   },
 })
 
@@ -95,6 +98,6 @@ export const selectTotalPrice = (state: RootState) => {
   ).toFixed(2);
 };
 
-export const { addToCart, removeFromCart, decrementQuantity, incrementQuantity, setQuantity } = cartSlice.actions
+export const { addToCart, removeFromCart, decrementQuantity, incrementQuantity, setQuantity, removeAllFromCart } = cartSlice.actions
 
 export const cartReducer =  cartSlice.reducer
