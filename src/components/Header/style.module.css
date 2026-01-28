@@ -7,8 +7,18 @@
 }
 
 .button{
-  color: #DCDCDC;
+  position: relative;
   &:hover{
     color: #ffffff;
   }
+}
+
+.count{
+  font-size: 12px;
+  padding: 3px 6px;
+  position: absolute;
+  background-color: rgb(87, 86, 86);
+  top: -9px;
+  right: -9px;
+  border-radius: 50%;
 }

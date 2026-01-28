@@ -1,13 +1,17 @@
 import styles from './style.module.css'
-import { useAppSelector } from '../../hooks/hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import CardWithCounter from '../../ui/CardWithCounter/CardWithCounter'
-import { selectTotalItems, selectTotalPrice } from '../../features/cart/cartSlice'
+import { removeAllFromCart, selectTotalItems, selectTotalPrice } from '../../features/cart/cartSlice'
 import Button from '../../ui/Button/Button'
 
 const CartProducts = () => {
   const cart = useAppSelector(state => state.cart.items)
   const totalItems = useAppSelector(selectTotalItems)
   const totalPrice = useAppSelector(selectTotalPrice)
+  const dispatch = useAppDispatch()
+  const hadleDeleteAll = () => {
+    dispatch(removeAllFromCart())
+  }
   return (
     <main className={styles.main}>
       {cart.length > 0 ? 
@@ -25,11 +29,12 @@ const CartProducts = () => {
               />
           ))}
         </section>
-        <section>
+        <section className={styles.order}>
+          <Button className={styles.deleteAllButton} children={'Удалить все из корзины'} onClick={hadleDeleteAll}/>
           <div className={styles.info}>
             <p>Количество товаров: {totalItems}шт.</p>
             <p>Общая цена: {totalPrice}$</p>
-            <Button className={styles.button} children={'Оформить'}/>
+            <Button className={styles.orderButton} children={'Оформить'}/>
           </div>
         </section>
       </>

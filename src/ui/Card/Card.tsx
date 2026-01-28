@@ -55,8 +55,10 @@ const Card = (Props: ICard) => {
       </div>
       <span className={styles.rating}><p>Rating:</p>{rating}</span>
       <p className={styles.title} onClick={handleClick}>{title}</p>
-      <p className={styles.price}>{price} $</p>
-      <Button children={quantity > 0 ? 'Удалить из корзины' : 'Добавить в корзину'} onClick={handleCart}/>
+      <div className={styles.Wrapper}>
+        <p className={styles.price}>{price} $</p>
+        <Button className={styles.button} children={quantity > 0 ? 'Удалить из корзины' : 'Добавить в корзину'} onClick={handleCart}/>
+      </div>
     </div>
   )
 }
