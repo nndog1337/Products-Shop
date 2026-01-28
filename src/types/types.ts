@@ -29,3 +29,16 @@ export interface Review {
   reviewerName: string
   reviewerEmail: string
 }
+
+export interface ICard{
+  className?:string
+  id: number,
+  thumbnail: string,
+  title: string,
+  rating: number,
+  price: number
+}
+
+export interface ICardWithQuantity extends ICard{
+  quantity: number
+}

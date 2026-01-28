@@ -1,7 +1,6 @@
 .select{
   color: var(--light-gray);
-
-  option{
-    color: black;
-  }
+  text-align: center;
+  width: 200px;
+  background-color: #696969;
 }
