@@ -8,7 +8,7 @@ import type { RootState } from '../../store/store'
 import { useAppDispatch } from '../../hooks/hooks'
 
 interface ICardDetailsProps{
-  cardId: string 
+  cardId?: string
 }
 
 const CardDetails = (Props: ICardDetailsProps) => {
@@ -19,7 +19,7 @@ const CardDetails = (Props: ICardDetailsProps) => {
   const dispatch = useAppDispatch();
 
   const quantity = useSelector((state: RootState) =>
-    selectQuantity(state, +cardId)
+    selectQuantity(state, +(cardId ?? "0"))
   );
 
   const priceWithDiscount = () => {
